@@ -188,7 +188,7 @@ def tweepy_function():
                 new_user_list_df = pd.read_csv(USER_LIST_CSV_DIR, engine='python', header=0)
                 new_user_list_df['Screen Name'] = list(user_dict.keys())
                 new_user_list_df['Age'] = list(user_dict.values())
-                new_user_list_df.to_csv(USER_LIST_CSV_DIR, index=False)
+                new_user_list_df.to_csv(USER_LIST_CSV_DIR, index=False, encoding="utf-8")
 
         # ~_rev_result.csv 업데이트
         copied_df.to_csv(result_csv_title, encoding="utf-8", index=False)

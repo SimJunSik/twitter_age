@@ -51,7 +51,7 @@ def check_user_list_file(df, USER_LIST_CSV_DIR):
         new_user_df = pd.DataFrame(new_user_dict)
         user_list_df=user_list_df.append(new_user_df, ignore_index=True)
         # 다시 write
-        user_list_df.to_csv(USER_LIST_CSV_DIR, index=False, columns=['Screen Name', 'Age'])
+        user_list_df.to_csv(USER_LIST_CSV_DIR, index=False, columns=['Screen Name', 'Age'], encoding='utf-8')
 
 
 def set_twitter_auth():
@@ -104,13 +104,11 @@ def tweepy_function():
     for csv_title in csv_title_list:
         # 원본 파일 read
         DIR = CSV_BASE_DIR + "{}/{}.csv".format(CSV_DIR, csv_title)
-        origin_df = pd.read_csv(DIR, engine='python')
+        origin_df = pd.read_csv(DIR, engine='python', encoding='utf-8')
         origin_df.rename(columns = {'Unnamed: 0' : ''}, inplace = True)
         result_csv_title = "/{}_result.csv".format(csv_title)
         result_csv_title = os.path.abspath('twitter') + result_csv_title
-        # print(result_csv_title)
-        # sys.exit()
-        origin_df.to_csv(result_csv_title, index=False)
+        origin_df.to_csv(result_csv_title, index=False, encoding='utf-8')
         
         # pandas로 read
         df = pd.read_csv(result_csv_title, engine='python', encoding='utf-8')
@@ -185,7 +183,7 @@ def tweepy_function():
                     print()
 
                 # user_list.csv 업데이트
-                new_user_list_df = pd.read_csv(USER_LIST_CSV_DIR, engine='python', header=0)
+                new_user_list_df = pd.read_csv(USER_LIST_CSV_DIR, engine='python', header=0, encoding='utf-8')
                 new_user_list_df['Screen Name'] = list(user_dict.keys())
                 new_user_list_df['Age'] = list(user_dict.values())
                 new_user_list_df.to_csv(USER_LIST_CSV_DIR, index=False, encoding="utf-8")

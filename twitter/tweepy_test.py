@@ -101,7 +101,7 @@ def tweepy_function():
     # csv 파일들 가져오기
     CSV_DIR = '/mentions_rev/'
     csv_title_list = get_csv_files(CSV_DIR)
-    for csv_title in csv_title_list[:1]:
+    for csv_title in csv_title_list:
         # 원본 파일 read
         DIR = CSV_BASE_DIR + "{}/{}.csv".format(CSV_DIR, csv_title)
         origin_df = pd.read_csv(DIR, engine='python')
@@ -165,7 +165,6 @@ def tweepy_function():
                         age_range_info = user_info.age_range
                         copied_df.loc[:, "Age"][idx] = user_info.age_range
                         user_dict[author] = user_info.age_range
-                        print(profile_image_url)
                         print("age >> {}".format(user_info.age_range))
                         print("gender >> {}".format(user_info.gender))
                         print()

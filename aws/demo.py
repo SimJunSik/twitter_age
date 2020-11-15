@@ -18,6 +18,7 @@ import boto3
 from botocore.exceptions import ClientError
 import requests
 import json
+import os
 
 from twitter_age.aws.rekognition_objects import (
     RekognitionFace, RekognitionCelebrity, RekognitionLabel,
@@ -207,8 +208,6 @@ def usage_demo(image_url):
     SECRETS_DIR = BASE_DIR + '/secrets.json'
     with open(SECRETS_DIR) as json_file:
         secrets = json.load(json_file)
-    print(secrets)
-    sys.exit()
     logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
     rekognition_client = boto3.client('rekognition', 
                                 region_name='ap-northeast-2', 

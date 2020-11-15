@@ -37,6 +37,7 @@
 
 ```
     1. twitter_age 디렉토리 안에 아래와 같은 내용으로 secrets.json 생성
+
     2. 각자 할당 받은 key, token 값 대입
     {
         "AWS_ACCESS_KEY":"",

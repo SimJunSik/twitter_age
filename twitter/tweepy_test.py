@@ -141,7 +141,8 @@ def tweepy_function():
                     # screen name 으로 twitter api 에서 해당 user info 가져옴
                     try:
                         user = api.get_user(screen_name=author)
-                    except:
+                    except Exception as e:
+                        print(e)
                         age_range_info = 'unknown'
                         copied_df.loc[:, "Age"][idx] = age_range_info
                         user_dict[author] = age_range_info
